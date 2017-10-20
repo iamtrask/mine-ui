@@ -14,7 +14,7 @@ export default () => (
     <Container className="not-found-container">
       <Row>
         <Column sizes={{ small: 12 }}>
-          <p>404 Page</p>
+          <h1>We can't find this page!</h1>
         </Column>
       </Row>
     </Container>
