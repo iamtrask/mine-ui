@@ -27,10 +27,12 @@ class App extends Component {
           notifications={this.props.notifications}
           removeFunc={this.props.removeNotification}
         />
-        <Header
-          isAuthenticated={this.props.isAuthenticated}
-          currentPage={this.props.location.pathname}
-        />
+        {this.props.isAuthenticated && (
+          <Header
+            isAuthenticated={this.props.isAuthenticated}
+            currentPage={this.props.location.pathname}
+          />
+        )}
         <div id="content">
           <Switch>
             <Route path="/dashboard" component={Dashboard} />

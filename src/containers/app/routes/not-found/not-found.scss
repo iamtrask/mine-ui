@@ -1,15 +1,14 @@
-@import 'styles/general';
 @import 'styles/colors';
-@import 'styles/media-queries';
 
 #not-found {
-  .not-found-container {
-    padding: $medium-space 0px;
-    @include desktop-up {
-      padding: $large-space 0px;
-    }
-    h1 {
-      text-align: center;
-    }
+  h1 {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: rgba($white, 0.25);
+    cursor: default;
   }
 }
