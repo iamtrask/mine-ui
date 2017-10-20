@@ -30,8 +30,9 @@
       width: 100%;
       margin-bottom: $medium-space;
     }
-    button {
+    .button {
       display: block;
+      width: auto;
       padding: $medium-space $large-space;
       @include desktop-up {
         margin-top: $medium-space;

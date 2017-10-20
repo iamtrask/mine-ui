@@ -11,7 +11,7 @@ import logo from '../../../assets/logo.svg';
 import './login.css';
 
 const LoginCard = ({ state, change, submit }) => (
-  <div className="login-card">
+  <form className="login-card" onSubmit={submit}>
     <Row>
       <Column sizes={{ small: 8, large: 6 }} offsets={{ small: 2, large: 3 }}>
         <img src={logo} alt="OpenMined" />
@@ -20,25 +20,23 @@ const LoginCard = ({ state, change, submit }) => (
         <input
           type="email"
           name="email"
-          defaultValue={state.email}
+          value={state.email}
           onChange={change}
           placeholder="Email Address"
         />
         <input
           type="password"
           name="password"
-          defaultValue={state.password}
+          value={state.password}
           onChange={change}
           placeholder="Password"
         />
       </Column>
       <Column sizes={{ small: 12 }}>
-        <button className="black centered" onClick={submit}>
-          Log In
-        </button>
+        <input type="submit" value="Log In" className="button black centered" />
       </Column>
     </Row>
-  </div>
+  </form>
 );
 
 class Login extends Component {
@@ -54,8 +52,12 @@ class Login extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmit() {
-    this.props.authenticateUser(this.state);
+  handleSubmit(e) {
+    if (this.state.email !== '' && this.state.password !== '') {
+      this.props.authenticateUser(this.state);
+    }
+
+    e.preventDefault();
   }
 
   handleChange(e) {
