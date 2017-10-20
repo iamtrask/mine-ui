@@ -1,0 +1,44 @@
+.nav-icon {
+  position: relative;
+  width: $nav-icon-size + $nav-icon-bar-size;
+  height: $nav-icon-size;
+  margin-right: 15px;
+  cursor: pointer;
+  @include desktop-up {
+    display: none;
+  }
+  span {
+    position: absolute;
+    left: 0;
+    height: $nav-icon-bar-size;
+    width: 100%;
+    display: block;
+    background: $medium-gray;
+    border-radius: $round-radius;
+    transition: all $anim-time $anim-func;
+    &:nth-child(1) {
+      top: 0px;
+    }
+    &:nth-child(2),
+    &:nth-child(3) {
+      top: ($nav-icon-size / 2) - ($nav-icon-bar-size / 2);
+    }
+    &:nth-child(4) {
+      top: $nav-icon-size - $nav-icon-bar-size;
+    }
+  }
+  &.open span {
+    &:nth-child(1),
+    &:nth-child(4) {
+      top: $nav-icon-size / 2;
+      width: 0%;
+      left: 50%;
+    }
+    &:nth-child(2) {
+      transform: rotate(45deg);
+    }
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+    }
+  }
+}

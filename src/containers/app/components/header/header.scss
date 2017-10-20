@@ -1,0 +1,65 @@
+@import 'styles/colors';
+@import 'styles/z-index';
+@import 'styles/media-queries';
+@import 'styles/ui/typography';
+
+$mobile-menu-height: 60px;
+$normal-menu-height: 80px;
+$logo-height: 50px;
+$nav-icon-size: 20px;
+$nav-icon-bar-size: 4px;
+
+#header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: $mobile-menu-height;
+  z-index: $header-zindex;
+  transition: height $anim-time $anim-func, background $anim-time $anim-func;
+  @include desktop-up {
+    height: $normal-menu-height;
+  }
+  &.transparent {
+    @include desktop-up {
+      background: none;
+      #logo {
+        filter: brightness(0) invert(1);
+      }
+      .navigation a {
+        color: rgba($white, 0.75);
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+  .title {
+    flex-basis: 200px;
+    transition: margin $anim-time $anim-func;
+    @include desktop-up {
+      margin-left: 10px;
+      margin-right: 20px;
+    }
+    a {
+      display: block;
+      height: $logo-height;
+      #logo {
+        width: 100%;
+      }
+    }
+  }
+  @import 'nav-icon';
+  @import 'navigation';
+}
+
+.header-margin-bump {
+  margin-top: $mobile-menu-height;
+  @include desktop-up {
+    margin-top: $normal-menu-height;
+  }
+}

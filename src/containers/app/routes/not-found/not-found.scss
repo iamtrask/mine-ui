@@ -1,0 +1,28 @@
+@import 'styles/general';
+@import 'styles/colors';
+@import 'styles/media-queries';
+
+#not-found {
+  .not-found-container {
+    padding: $medium-space 0px;
+    @include desktop-up {
+      padding: $large-space 0px;
+    }
+    .logo {
+      display: block;
+      margin: 0px auto;
+      width: 200px;
+      transform: rotate(180deg);
+    }
+    .title,
+    .description {
+      text-align: center;
+    }
+    .description {
+      color: $dark-gray;
+      @include desktop-up {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

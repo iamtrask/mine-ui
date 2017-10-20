@@ -1,0 +1,28 @@
+// Pure
+$pure-white: #fff;
+$pure-black: #000;
+
+// Brand tones
+$white: #fafafa;
+$light-gray: #e1e1e1;
+$medium-gray: #aaa;
+$dark-gray: #555;
+$black: #222;
+
+// Brand hues
+$primary-color: #5dc9f3;
+$success-color: #b8e986;
+$alert-color: #d0021b;
+
+// Gradients
+$horizontal-gradient: linear-gradient(
+  to right,
+  $success-color 0%,
+  $primary-color 100%
+);
+
+$diagonal-gradient: linear-gradient(
+  135deg,
+  $success-color 0%,
+  $primary-color 100%
+);

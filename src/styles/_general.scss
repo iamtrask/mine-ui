@@ -1,0 +1,17 @@
+$body-font: 'Muli', sans-serif;
+
+$normal-weight: 400;
+$bold-weight: 700;
+$extra-bold-weight: 800;
+
+$small-space: 10px;
+$medium-space: $small-space * 2;
+$large-space: $medium-space * 2;
+$xlarge-space: $large-space * 2;
+
+$border-radius: 3px;
+$extra-border-radius: 5 * $border-radius;
+$round-radius: 1000px;
+
+$anim-time: 200ms;
+$anim-func: ease-in-out;

@@ -1,0 +1,40 @@
+@import 'normalize.css/normalize';
+@import 'styles/general';
+@import 'styles/colors';
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+*,
+*:focus {
+  outline: none;
+}
+
+body {
+  background: $pure-white;
+  color: $black;
+
+  font-family: $body-font;
+  font-weight: $normal-weight;
+  font-size: 16px;
+  line-height: 1.5;
+  direction: ltr;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+}
+
+// Load in the UI elements
+@import 'styles/ui/grid';
+@import 'styles/ui/typography';
+@import 'styles/ui/forms';
+@import 'styles/ui/buttons';
