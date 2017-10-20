@@ -14,7 +14,7 @@ export default {
   right: [
     {
       name: 'Login',
-      to: '/login',
+      to: '/',
       button: true,
       unauthRequired: true
     },

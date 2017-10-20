@@ -2,7 +2,7 @@ input,
 select {
   padding: $small-space;
   background: $white;
-  border: 2px solid darken($white, 5%);
+  border: 2px solid $off-white;
   border-radius: $border-radius;
   font-family: $body-font;
 }

@@ -5,7 +5,7 @@
 
 $mobile-menu-height: 60px;
 $normal-menu-height: 80px;
-$logo-height: 50px;
+$logo-size: 50px;
 $nav-icon-size: 20px;
 $nav-icon-bar-size: 4px;
 
@@ -13,7 +13,7 @@ $nav-icon-bar-size: 4px;
   position: fixed;
   top: 0px;
   left: 0px;
-  background: $white;
+  background: $off-white;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -24,22 +24,8 @@ $nav-icon-bar-size: 4px;
   @include desktop-up {
     height: $normal-menu-height;
   }
-  &.transparent {
-    @include desktop-up {
-      background: none;
-      #logo {
-        filter: brightness(0) invert(1);
-      }
-      .navigation a {
-        color: rgba($white, 0.75);
-        &:hover {
-          color: $white;
-        }
-      }
-    }
-  }
   .title {
-    flex-basis: 200px;
+    flex-basis: $logo-size;
     transition: margin $anim-time $anim-func;
     @include desktop-up {
       margin-left: 10px;
@@ -47,9 +33,9 @@ $nav-icon-bar-size: 4px;
     }
     a {
       display: block;
-      height: $logo-height;
+      height: $logo-size;
       #logo {
-        width: 100%;
+        height: 100%;
       }
     }
   }

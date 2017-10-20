@@ -7,7 +7,7 @@ $header-styles: (h1: 48px, h2: 40px, h3: 32px, h4: 26px, h5: 20px, h6: 16px);
 $header-factors: (h1: 0.6, h2: 0.6, h3: 0.65, h4: 0.7, h5: 0.8, h6: 0.9);
 
 // Functions
-@mixin capped-text($spacing: 1px) {
+@mixin capped-text($spacing: 2px) {
   text-transform: uppercase;
   letter-spacing: $spacing;
   font-family: $body-font;
@@ -21,10 +21,15 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: $normal-weight;
   line-height: $header-lineheight;
   margin-top: $medium-space;
   margin-bottom: $small-space;
+  @include capped-text();
+  &.not-capped {
+    text-transform: none;
+    letter-spacing: normal;
+    font-weight: $bold-weight;
+  }
 }
 
 @for $i from 1 through 6 {

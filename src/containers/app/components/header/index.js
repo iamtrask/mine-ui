@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-
 import { Link } from 'react-router-dom';
 
-import logo from '../../assets/logo.svg';
+import logomark from '../../assets/logomark.svg';
+import links from './links';
 
 import './header.css';
-
-import links from './links';
 
 const validLink = (authenticated, link) => {
   return (
@@ -18,20 +16,10 @@ const validLink = (authenticated, link) => {
 
 const activeLink = (to, current) => (to === current ? 'active ' : '');
 
-const isTransparent = page => page === '/';
-
-const headerSpecialClass = (page, scrolled, theClass) => {
-  if (isTransparent(page) && !scrolled) {
-    return theClass;
-  }
-
-  return '';
-};
-
-const Title = () => (
+const Title = props => (
   <div className="title">
-    <Link to="/">
-      <img src={logo} alt="OpenMined" />
+    <Link to={props.authenticated ? '/dashboard' : '/'}>
+      <img src={logomark} id="logo" alt="OpenMined" />
     </Link>
   </div>
 );
@@ -57,12 +45,7 @@ const Navigation = props => (
             let classes = activeLink(link.to, props.currentPage);
 
             if (link.button) {
-              classes += 'button ';
-              classes += headerSpecialClass(
-                props.currentPage,
-                props.isScrolled,
-                'white'
-              );
+              classes += ' button';
             }
 
             if (typeof link.to === 'string') {
@@ -130,15 +113,8 @@ class Header extends Component {
 
   render() {
     return (
-      <div
-        id="header"
-        className={headerSpecialClass(
-          this.props.currentPage,
-          this.state.isScrolled,
-          'transparent'
-        )}
-      >
-        <Title />
+      <div id="header">
+        <Title authenticated={this.props.isAuthenticated} />
         <Hamburger
           isToggled={this.state.mobileToggled}
           toggleMenu={this.toggleMenu}

@@ -5,7 +5,7 @@
     left: 0px;
     width: 100%;
     height: 0px;
-    background: $white;
+    background: $off-white;
     text-align: center;
     overflow: hidden;
   }
@@ -46,17 +46,10 @@
       display: inline-block;
       margin-top: 10px;
       margin-bottom: 20px;
+      padding: 10px 30px;
       color: $white;
-      &.white {
-        @include tablet-down {
-          background: $primary-color;
-          color: $white;
-        }
-        color: $black;
-      }
       @include desktop-up {
         margin: 0px;
-        padding: 10px 30px;
       }
     }
   }
