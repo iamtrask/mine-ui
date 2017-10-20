@@ -3,10 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import AuthenticatedRoute from '../../components/authenticated-route';
 import UnauthenticatedRoute from '../../components/unauthenticated-route';
 
-import Login from './login';
-import Logout from './logout';
+import asyncComponent from '../../components/async-component';
 
-import NotFound from '../not-found';
+const Login = asyncComponent(() => import('./login'));
+const Logout = asyncComponent(() => import('./logout'));
+
+const NotFound = asyncComponent(() => import('../not-found'));
 
 export default () => (
   <Switch>

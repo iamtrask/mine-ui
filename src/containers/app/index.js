@@ -6,14 +6,18 @@ import { Route, Switch } from 'react-router-dom';
 // Action Creators
 import { removeNotification } from '../../modules/notification';
 
+import asyncComponent from './components/async-component';
+
 // UI Components
-import Header from './components/header';
-import Notifications from './components/notifications';
+const Header = asyncComponent(() => import('./components/header'));
+const Notifications = asyncComponent(() =>
+  import('./components/notifications')
+);
 
 // Routes
-import Static from './routes/static';
-import Dashboard from './routes/dashboard';
-import NotFound from './routes/not-found';
+const Static = asyncComponent(() => import('./routes/static'));
+const Dashboard = asyncComponent(() => import('./routes/dashboard'));
+const NotFound = asyncComponent(() => import('./routes/not-found'));
 
 class App extends Component {
   render() {

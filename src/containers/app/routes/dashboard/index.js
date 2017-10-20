@@ -2,10 +2,12 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import AuthenticatedRoute from '../../components/authenticated-route';
 
-import Home from './home';
-import About from './about';
+import asyncComponent from '../../components/async-component';
 
-import NotFound from '../not-found';
+const Home = asyncComponent(() => import('./home'));
+const About = asyncComponent(() => import('./about'));
+
+const NotFound = asyncComponent(() => import('../not-found'));
 
 export default () => (
   <Switch>
