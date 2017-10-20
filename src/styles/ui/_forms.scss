@@ -1,8 +1,12 @@
 input,
 select {
-  padding: $small-space;
+  padding: $medium-space;
   background: $white;
-  border: 2px solid $off-white;
+  border: 2px solid lighten($light-gray, 10%);
   border-radius: $border-radius;
   font-family: $body-font;
+  transition: border $anim-time $anim-func;
+  &:focus {
+    border: 2px solid $medium-gray;
+  }
 }

@@ -1,0 +1,37 @@
+@import 'styles/general';
+@import 'styles/colors';
+@import 'styles/media-queries';
+
+#login {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  .login-card {
+    padding: $medium-space;
+    background: $white;
+    border-radius: $extra-border-radius;
+    box-shadow: 0px $small-space $large-space rgba($black, 0.25);
+    margin-top: $medium-space;
+    @include desktop-up {
+      padding: $large-space;
+      margin-top: $xlarge-space;
+    }
+    img {
+      margin-bottom: $small-space;
+      @include desktop-up {
+        margin-bottom: $medium-space;
+      }
+    }
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: $medium-space;
+    }
+    button {
+      display: block;
+      padding: $medium-space $large-space;
+    }
+  }
+}

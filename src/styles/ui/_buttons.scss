@@ -44,9 +44,9 @@ input[type='submit'] {
     }
   }
   &.black {
-    background: $black;
+    background: $off-black;
     &:hover {
-      background: lighten($black, $button-hover);
+      background: lighten($off-black, $button-hover);
     }
   }
   &.small {
