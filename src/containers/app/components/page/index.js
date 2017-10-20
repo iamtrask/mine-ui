@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { withRouter } from 'react-router';
 import Helmet from 'react-helmet';
@@ -13,7 +15,31 @@ const defaultImage = `${defaultUrl}/images/logo.png`;
 const defaultTwitter = '@openminedorg';
 const defaultSep = ' | ';
 
-class Page extends Component {
+type MetaTags = {
+  noCrawl: boolean,
+  title: string,
+  description?: string,
+  image?: any,
+  contentType?: string,
+  twitter?: string,
+  published?: Date,
+  updated?: Date,
+  category?: string,
+  tags?: string
+}
+
+type Props =  MetaTags & {
+  children: any, // TODO: React Flow Types
+  title: string,
+  location: {
+    pathname: string
+  },
+  schema?: string,
+  className?: string,
+  id?: string
+}
+
+class Page extends Component<Props> {
   getMetaTags(
     {
       title,
@@ -26,7 +52,7 @@ class Page extends Component {
       updated,
       category,
       tags
-    },
+    }: MetaTags,
     pathname
   ) {
     const theTitle = title
@@ -78,6 +104,7 @@ class Page extends Component {
   }
 
   render() {
+    // $FlowFixMe
     const { children, id, className, ...rest } = this.props;
 
     return (
