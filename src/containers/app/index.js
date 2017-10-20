@@ -16,7 +16,7 @@ const Notifications = asyncComponent(() =>
 
 // Routes
 const Static = asyncComponent(() => import('./routes/static'));
-const Dashboard = asyncComponent(() => import('./routes/dashboard'));
+const Mine = asyncComponent(() => import('./routes/mine'));
 const NotFound = asyncComponent(() => import('./routes/not-found'));
 
 class App extends Component {
@@ -35,7 +35,7 @@ class App extends Component {
         )}
         <div id="content">
           <Switch>
-            <Route path="/dashboard" component={Dashboard} />
+            <Route path="/mine" component={Mine} />
             <Route path="/" component={Static} />
             <Route component={NotFound} />
           </Switch>

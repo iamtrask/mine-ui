@@ -5,16 +5,11 @@ import Page from '../../../components/page';
 
 import { addNotification } from '../../../../../modules/notification';
 
-class Home extends Component {
+class Mine extends Component {
   render() {
     return (
-      <Page
-        id="dashboard"
-        className="header-margin-bump"
-        title="Dashboard"
-        noCrawl
-      >
-        <h1>Dashboard</h1>
+      <Page id="mine" className="header-margin-bump" title="My Mine" noCrawl>
+        <h1>My Mine</h1>
         <button
           onClick={() =>
             this.props.addNotification({ text: 'Welcome to OpenMined!' })}
@@ -29,4 +24,4 @@ class Home extends Component {
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ addNotification }, dispatch);
 
-export default connect(null, mapDispatchToProps)(Home);
+export default connect(null, mapDispatchToProps)(Mine);

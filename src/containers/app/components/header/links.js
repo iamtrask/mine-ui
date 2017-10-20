@@ -1,13 +1,23 @@
 export default {
   left: [
     {
-      name: 'Dashboard',
-      to: '/dashboard',
+      name: 'My Mine',
+      to: '/mine',
       authRequired: true
     },
     {
-      name: 'Dashboard About',
-      to: '/dashboard/about',
+      name: 'Schema',
+      to: '/mine/schema',
+      authRequired: true
+    },
+    {
+      name: 'Adapters',
+      to: '/mine/adapters',
+      authRequired: true
+    },
+    {
+      name: 'Bounties',
+      to: '/mine/bounties',
       authRequired: true
     }
   ],

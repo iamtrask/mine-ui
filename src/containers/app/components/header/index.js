@@ -18,7 +18,7 @@ const activeLink = (to, current) => (to === current ? 'active ' : '');
 
 const Title = props => (
   <div className="title">
-    <Link to={props.authenticated ? '/dashboard' : '/'}>
+    <Link to={props.authenticated ? '/mine' : '/'}>
       <img src={logomark} id="logo" alt="OpenMined" />
     </Link>
   </div>

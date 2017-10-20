@@ -9,7 +9,7 @@ const UnauthenticatedRoute = ({ component: Component, ...rest }) => (
       !rest.isAuthenticated ? (
         <Component {...props} />
       ) : (
-        <Redirect to="/dashboard" />
+        <Redirect to="/mine" />
       )}
   />
 );
