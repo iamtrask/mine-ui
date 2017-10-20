@@ -1,6 +1,7 @@
 @import 'styles/general';
 @import 'styles/colors';
 @import 'styles/media-queries';
+@import 'styles/ui/typography';
 
 #login {
   position: absolute;
@@ -32,6 +33,16 @@
     button {
       display: block;
       padding: $medium-space $large-space;
+      @include desktop-up {
+        margin-top: $medium-space;
+      }
     }
+  }
+  .small-text {
+    @include capped-text();
+    color: rgba($white, 0.25);
+    text-align: center;
+    margin-top: $large-space;
+    font-size: 0.9rem;
   }
 }

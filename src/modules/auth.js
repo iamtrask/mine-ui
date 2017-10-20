@@ -24,8 +24,10 @@ export default (state = initialState, action) => {
   }
 };
 
-export const authenticateUser = () => {
+export const authenticateUser = ({ email, password }) => {
   return dispatch => {
+    console.log('DO SOMETHING WITH THIS', email, password);
+
     return setTimeout(() => {
       dispatch({
         type: AUTHENICATE
