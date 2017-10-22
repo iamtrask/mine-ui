@@ -2,7 +2,7 @@ export const AUTHENICATE = 'auth/AUTHENICATE';
 export const LOGOUT = 'auth/LOGOUT';
 
 const initialState = {
-  isAuthenticated: false
+  isAuthenticated: true
 };
 
 export default (state = initialState, action) => {

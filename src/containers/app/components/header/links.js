@@ -22,17 +22,17 @@ export default {
     }
   ],
   right: [
-    {
-      name: 'Login',
-      to: '/',
-      button: true,
-      unauthRequired: true
-    },
-    {
-      name: 'Logout',
-      to: '/logout',
-      button: true,
-      authRequired: true
-    }
+    // {
+    //   name: 'Login',
+    //   to: '/',
+    //   button: true,
+    //   unauthRequired: true
+    // },
+    // {
+    //   name: 'Logout',
+    //   to: '/logout',
+    //   button: true,
+    //   authRequired: true
+    // }
   ]
 };

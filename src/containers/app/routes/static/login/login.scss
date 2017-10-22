@@ -31,7 +31,6 @@
       margin-bottom: $medium-space;
     }
     .button {
-      display: block;
       width: auto;
       padding: $medium-space $large-space;
       @include desktop-up {

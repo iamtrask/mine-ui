@@ -61,6 +61,7 @@ input[type='submit'] {
     width: 100%;
   }
   &.centered {
+    display: block;
     margin: 0px auto $small-space auto;
   }
   &[disabled] {
