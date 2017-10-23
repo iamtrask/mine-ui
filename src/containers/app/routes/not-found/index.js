@@ -1,6 +1,5 @@
 import React from 'react';
-import Page from '../../components/page';
-import BackgroundGradient from '../../components/background-gradient';
+import { BackgroundGradient, Page, Heading } from 'omui';
 
 import './not-found.css';
 
@@ -12,6 +11,6 @@ export default () => (
     className="header-margin-bump"
   >
     <BackgroundGradient animated />
-    <h1>We can't find this page...</h1>
+    <Heading level={1}>We can't find this page...</Heading>
   </Page>
 );

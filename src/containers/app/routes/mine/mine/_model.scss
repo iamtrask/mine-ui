@@ -1,3 +1,46 @@
 .model {
   margin-top: 30px;
+  @include tablet-up {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .content {
+    .name {
+      margin-top: 0px;
+      margin-bottom: 5px;
+    }
+    .meta {
+      .private {
+        color: $medium-gray;
+        font-size: 1.5rem;
+        margin-right: $small-space;
+        vertical-align: bottom;
+      }
+      .author {
+        color: $medium-gray;
+      }
+      .separator {
+        color: $light-gray;
+      }
+      .bounty {
+        color: $success-color;
+      }
+    }
+  }
+  .progress-cta {
+    margin-top: $small-space;
+    @include tablet-up {
+      margin-top: 0px;
+    }
+    .progress {
+      display: none;
+      @include desktop-up {
+        display: block;
+      }
+    }
+    button {
+      margin-bottom: 0px;
+    }
+  }
 }

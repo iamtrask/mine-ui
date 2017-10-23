@@ -12,6 +12,7 @@ input[type='submit'] {
   background: $primary-color;
   color: $white;
   @include capped-text(1.5px);
+  font-weight: $extra-bold-weight;
   font-size: $button-font-size;
   white-space: nowrap;
   border: 0px;
