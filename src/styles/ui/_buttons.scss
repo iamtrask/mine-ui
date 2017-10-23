@@ -50,6 +50,25 @@ input[type='submit'] {
       background: lighten($off-black, $button-hover);
     }
   }
+  &.dark-gray {
+    background: $dark-gray;
+    &:hover {
+      background: lighten($dark-gray, $button-hover);
+    }
+  }
+  &.medium-gray {
+    background: $medium-gray;
+    &:hover {
+      background: lighten($medium-gray, $button-hover);
+    }
+  }
+  &.light-gray {
+    background: $light-gray;
+    color: $black;
+    &:hover {
+      background: darken($light-gray, $button-hover);
+    }
+  }
   &.small {
     font-size: $button-font-size * 0.8;
     padding: $button-padding * 0.8;

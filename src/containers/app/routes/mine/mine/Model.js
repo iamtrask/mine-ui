@@ -21,7 +21,7 @@ const Model = ({ model, queued, buttonFunc }) => (
     <div className="progress-cta">
       {queued && <div className="progress">{model.timeRemaining}</div>}
       <button
-        className={!queued ? 'dark-gray' : 'black'}
+        className={!queued ? 'medium-gray' : 'dark-gray'}
         onClick={() => buttonFunc(model)}
       >
         {!queued ? 'Add to Queue' : 'Pause Training'}
