@@ -51,7 +51,8 @@ export default (state = initialState, action) => {
 // Adds a model to state.models.modelQueue
 export const enqueueModel = model => {
   const currentTime = Math.floor(Date.now() / 1000);
-  const trainingTime = currentTime + Math.floor(Math.random() * 12000) + 8000;
+  const trainingTime =
+    (currentTime + Math.floor(Math.random() * 120) + 80) * 1000;
 
   model.timeRemaining = trainingTime;
 

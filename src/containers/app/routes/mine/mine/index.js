@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { Input, Container, Row, Column, Switch, Page, Heading} from 'omui'
+import { Input, Container, Row, Column, Switch, Page, Heading } from 'omui';
 
 import Fuse from 'fuse.js';
 

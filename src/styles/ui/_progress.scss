@@ -1,0 +1,25 @@
+@import 'typography';
+@import 'styles/general';
+@import 'styles/colors';
+
+$progress-width: 240px;
+$progress-height: 30px;
+
+.progress {
+  position: relative;
+  display: inline-block;
+  border-radius: $border-radius;
+  border: 2px solid $light-gray;
+  width: $progress-width;
+  height: $progress-height;
+  .marker {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: block;
+    height: 100%;
+    background: $black;
+    z-index: -1;
+    transition: width $anim-time $anim-func;
+  }
+}
