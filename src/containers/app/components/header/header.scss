@@ -48,4 +48,10 @@ $nav-icon-bar-size: 4px;
   @include desktop-up {
     margin-top: $normal-menu-height;
   }
+  &.page-pad {
+    padding-top: $small-space;
+    @include desktop-up {
+      padding-top: $medium-space;
+    }
+  }
 }

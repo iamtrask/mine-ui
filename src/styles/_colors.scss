@@ -20,17 +20,43 @@ $purple: #767ea1;
 
 // Gradients
 // You can just use @extend .COLOR-DIRECTION-gradient; in SCSS
-@mixin createGradients($name, $color1, $color2) {
-  .#{$name}-horizontal-gradient {
+@mixin createGradients($direction, $color1, $color2) {
+  @if ($direction == 'horizontal') {
     background: linear-gradient(to right, $color1 0%, $color2 100%);
   }
-
-  .#{$name}-diagonal-gradient {
+  @elseif ($direction == 'diagonal') {
     background: linear-gradient(135deg, $color1 0%, $color2 100%);
   }
 }
 
-@include createGradients('alert', $alert-color, $orange);
-@include createGradients('warning', $orange, $warning-color);
-@include createGradients('success', $success-color, $turquoise);
-@include createGradients('primary', $primary-color, $purple);
+.alert-horiz-gradient {
+  @include createGradients('horizontal', $alert-color, $orange);
+}
+
+.alert-diag-gradient {
+  @include createGradients('diagonal', $alert-color, $orange);
+}
+
+.warning-horiz-gradient {
+  @include createGradients('horizontal', $orange, $warning-color);
+}
+
+.warning-diag-gradient {
+  @include createGradients('diagonal', $orange, $warning-color);
+}
+
+.success-horiz-gradient {
+  @include createGradients('horizontal', $success-color, $turquoise);
+}
+
+.success-diag-gradient {
+  @include createGradients('diagonal', $success-color, $turquoise);
+}
+
+.primary-horiz-gradient {
+  @include createGradients('horizontal', $primary-color, $purple);
+}
+
+.primary-diag-gradient {
+  @include createGradients('diagonal', $primary-color, $purple);
+}

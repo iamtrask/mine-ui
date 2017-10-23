@@ -1,0 +1,32 @@
+@import 'styles/colors';
+@import 'styles/general';
+@import 'styles/media-queries';
+
+#mine {
+  .models,
+  .model-queue {
+    ul {
+      margin: 0px;
+      padding: 0px;
+      list-style-type: none;
+      @import 'model';
+    }
+  }
+
+  .model-search {
+    width: 100%;
+  }
+
+  .auto-enroll {
+    margin-top: $medium-space;
+    justify-content: center;
+    @include tablet-up {
+      margin-top: 15px;
+      justify-content: flex-end;
+    }
+  }
+
+  .null-set {
+    color: $medium-gray;
+  }
+}
