@@ -1,8 +1,8 @@
 import React from 'react';
-import Page from '../../../components/page';
+import {Heading, Page} from 'omui';
 
 export default () => (
   <Page id="schema" className="header-margin-bump" title="Schema" noCrawl>
-    <h1>Schema</h1>
+    <Heading level={1}>Schema</Heading>
   </Page>
 );

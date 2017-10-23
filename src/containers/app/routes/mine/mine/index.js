@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Page from '../../../components/page';
-import { Container, Row, Column } from '../../../components/grid';
+
+import { Input, Container, Row, Column, Switch, Page, Heading} from 'omui'
 
 import Fuse from 'fuse.js';
 
@@ -48,7 +48,7 @@ class Mine extends Component {
         <Container>
           <Row>
             <Column sizes={{ small: 12 }}>
-              <h3>Current Process</h3>
+              <Heading level={3}>Current Process</Heading>
               <CurrentProcess
                 modelQueue={this.props.modelQueue}
                 dequeueModel={this.props.dequeueModel}
@@ -57,12 +57,12 @@ class Mine extends Component {
           </Row>
           <Row>
             <Column sizes={{ small: 12 }}>
-              <h4>Available Models</h4>
+              <Heading level={4}>Available Models</Heading>
             </Column>
           </Row>
           <Row>
             <Column sizes={{ small: 12, medium: 7, large: 9 }}>
-              <input
+              <Input
                 type="search"
                 value={this.state.search}
                 className="model-search"
@@ -73,18 +73,13 @@ class Mine extends Component {
               />
             </Column>
             <Column sizes={{ small: 12, medium: 5, large: 3 }}>
-              <div className="switch-container auto-enroll">
-                <p className="switch-label">Auto-enroll</p>
-                <label className="switch">
-                  <input
-                    type="checkbox"
-                    checked={this.state.autoEnroll}
-                    onChange={() =>
-                      this.setState({ autoEnroll: !this.state.autoEnroll })}
-                  />
-                  <span className="slider" />
-                </label>
-              </div>
+              <Switch
+                className="auto-enroll"
+                label="Auto-enroll"
+                checked={this.state.autoEnroll}
+                onChange={() =>
+                  this.setState({ autoEnroll: !this.state.autoEnroll })}
+              />
             </Column>
           </Row>
           <Row>

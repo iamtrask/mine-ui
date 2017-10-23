@@ -2,9 +2,15 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { authenticateUser } from '../../../../../modules/auth';
-import { Container, Row, Column } from '../../../components/grid';
 import Page from '../../../components/page';
-import BackgroundGradient from '../../../components/background-gradient';
+import {
+  BackgroundGradient,
+  Input,
+  Button,
+  Row,
+  Column,
+  Container
+} from 'omui';
 
 import logo from '../../../assets/logo.svg';
 
@@ -17,14 +23,14 @@ const LoginCard = ({ state, change, submit }) => (
         <img src={logo} alt="OpenMined" />
       </Column>
       <Column sizes={{ small: 12, large: 8 }} offsets={{ large: 2 }}>
-        <input
+        <Input
           type="email"
           name="email"
           value={state.email}
           onChange={change}
           placeholder="Email Address"
         />
-        <input
+        <Input
           type="password"
           name="password"
           value={state.password}
@@ -33,7 +39,7 @@ const LoginCard = ({ state, change, submit }) => (
         />
       </Column>
       <Column sizes={{ small: 12 }}>
-        <input type="submit" value="Log In" className="button black centered" />
+        <Button className='button' type="submit" centered color='black'>Log in</Button>
       </Column>
     </Row>
   </form>
