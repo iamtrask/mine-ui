@@ -31,7 +31,9 @@ const CTAButton = ({ model, queued, buttonFunc }) => (
 // TODO: We need to move this to the component library (OMUI)
 const Progress = ({ percent }) => (
   <div className="progress">
-    <span className="marker" style={{ width: percent + '%' }} />
+    <span className="marker" style={{ width: percent + '%' }}>
+      {percent}%
+    </span>
   </div>
 );
 
@@ -52,7 +54,7 @@ class TrainingStatus extends Component {
 
     this.setState({
       totalWait: moment
-        .duration(moment(this.props.timeRemaining).diff(moment()))
+        .duration(moment(this.props.model.timeRemaining).diff(moment()))
         .asSeconds()
         .toFixed(0)
     });
@@ -70,25 +72,38 @@ class TrainingStatus extends Component {
     }
   }
 
+  getSecondsRemaining() {
+    return moment.duration(this.state.totalWait - this.state.waited, 'seconds');
+  }
+
   getPercentRemaining() {
-    return (this.state.waited / this.state.totalWait * 100).toFixed(2);
+    return (this.state.waited / this.state.totalWait * 100).toFixed(0);
   }
 
   getTimeRemaining() {
-    let remaining = moment.duration(
-        this.state.totalWait - this.state.waited,
-        'seconds'
-      ),
-      hours = remaining.hours() > 0 ? remaining.hours() + ' hours' : '',
-      minutes = remaining.minutes() > 0 ? remaining.minutes() + ' minutes' : '',
-      seconds = remaining.seconds() > 0 ? remaining.seconds() + ' seconds' : '',
-      timeArray = [];
+    let remaining = this.getSecondsRemaining();
 
-    if (hours !== '') timeArray.push(hours);
-    if (minutes !== '') timeArray.push(minutes);
-    if (seconds !== '') timeArray.push(seconds);
+    if (remaining.asSeconds()) {
+      const determineTense = (num, word) => {
+        if (num === 1) return `${num} ${word}`;
+        else if (num > 1) return `${num} ${word}s`;
 
-    return `About ${timeArray.join(', ')} remaining`;
+        return '';
+      };
+
+      let hours = determineTense(remaining.hours(), 'hour'),
+        minutes = determineTense(remaining.minutes(), 'minute'),
+        seconds = determineTense(remaining.seconds(), 'second'),
+        timeArray = [];
+
+      if (hours !== '') timeArray.push(hours);
+      if (minutes !== '') timeArray.push(minutes);
+      if (seconds !== '') timeArray.push(seconds);
+
+      return `About ${timeArray.join(', ')} remaining`;
+    }
+
+    return 'Training complete.';
   }
 
   render() {
@@ -96,6 +111,13 @@ class TrainingStatus extends Component {
       <div className="training-status">
         <Progress percent={this.getPercentRemaining()} />
         <span className="time-remaining">{this.getTimeRemaining()}</span>
+        {this.getSecondsRemaining() > 0 && (
+          <CTAButton
+            model={this.props.model}
+            queued={this.props.queued}
+            buttonFunc={this.props.buttonFunc}
+          />
+        )}
       </div>
     );
   }
@@ -108,8 +130,12 @@ const Model = ({ model, queued, buttonFunc }) => (
       <Meta {...model} />
     </div>
     <div className="progress-cta">
-      {queued && <TrainingStatus {...model} />}
-      {<CTAButton model={model} queued={queued} buttonFunc={buttonFunc} />}
+      {queued && (
+        <TrainingStatus model={model} queued={queued} buttonFunc={buttonFunc} />
+      )}
+      {!queued && (
+        <CTAButton model={model} queued={queued} buttonFunc={buttonFunc} />
+      )}
     </div>
   </li>
 );

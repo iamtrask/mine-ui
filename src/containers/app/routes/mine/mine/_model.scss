@@ -3,7 +3,6 @@
   @include tablet-up {
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
   .content {
     .name {
@@ -39,7 +38,7 @@
     .training-status {
       display: none;
       .progress {
-        margin-bottom: $small-space;
+        margin-bottom: $small-space / 2;
       }
       .time-remaining {
         color: $medium-gray;
