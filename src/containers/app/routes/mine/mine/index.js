@@ -6,7 +6,12 @@ import { Input, Container, Row, Column, Switch, Page, Heading } from 'omui';
 
 import Fuse from 'fuse.js';
 
-import { enqueueModel, dequeueModel } from '../../../../../modules/models';
+import {
+  getAvailableModels,
+  getCurrentModels,
+  enqueueModel,
+  dequeueModel
+} from '../../../../../modules/models';
 
 import AvailableModels from './AvailableModels';
 import CurrentProcess from './CurrentProcess';
@@ -28,10 +33,16 @@ class Mine extends Component {
       autoEnroll: false
     };
   }
+  componentDidMount() {
+    this.props.getAvailableModels();
+    this.props.getCurrentModels();
+  }
 
   getAvailableModels(models, search) {
     if (search !== '') {
-      return new Fuse(this.props.models, options).search(this.state.search);
+      return new Fuse(this.props.availableModels, options).search(
+        this.state.search
+      );
     }
 
     return models;
@@ -50,7 +61,7 @@ class Mine extends Component {
             <Column sizes={{ small: 12 }}>
               <Heading level={3}>Current Process</Heading>
               <CurrentProcess
-                modelQueue={this.props.modelQueue}
+                currentModels={this.props.currentModels}
                 dequeueModel={this.props.dequeueModel}
               />
             </Column>
@@ -86,7 +97,7 @@ class Mine extends Component {
             <Column sizes={{ small: 12 }}>
               <AvailableModels
                 models={this.getAvailableModels(
-                  this.props.models,
+                  this.props.availableModels,
                   this.state.search
                 )}
                 enqueueModel={this.props.enqueueModel}
@@ -100,11 +111,14 @@ class Mine extends Component {
 }
 
 const mapStateToProps = state => ({
-  modelQueue: state.models.modelQueue,
-  models: state.models.models
+  currentModels: state.models.currentModels,
+  availableModels: state.models.availableModels
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ enqueueModel, dequeueModel }, dispatch);
+  bindActionCreators(
+    { getAvailableModels, getCurrentModels, enqueueModel, dequeueModel },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(Mine);

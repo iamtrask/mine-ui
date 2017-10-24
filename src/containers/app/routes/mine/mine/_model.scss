@@ -1,3 +1,12 @@
+@keyframes glow {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
 .model {
   margin-top: 30px;
   @include tablet-up {
@@ -5,25 +14,40 @@
     justify-content: space-between;
   }
   .content {
-    .name {
-      margin-top: 0px;
-      margin-bottom: 5px;
+    display: flex;
+    align-items: flex-start;
+    .model-image {
+      width: 52px;
+      margin-right: $small-space;
+      &.training {
+        animation: glow 20s $anim-func infinite;
+      }
+      @include tablet-up {
+        width: 64px;
+        margin-right: $medium-space;
+      }
     }
-    .meta {
-      .private {
-        color: $medium-gray;
-        font-size: 1.5rem;
-        margin-right: $small-space;
-        vertical-align: bottom;
+    .model-data {
+      .name {
+        margin-top: 0px;
+        margin-bottom: 5px;
       }
-      .author {
-        color: $medium-gray;
-      }
-      .separator {
-        color: $light-gray;
-      }
-      .bounty {
-        color: $success-color;
+      .meta {
+        .private {
+          color: $medium-gray;
+          font-size: 1.5rem;
+          margin-right: $small-space;
+          vertical-align: bottom;
+        }
+        .author {
+          color: $medium-gray;
+        }
+        .separator {
+          color: $light-gray;
+        }
+        .bounty {
+          color: $success-color;
+        }
       }
     }
   }
@@ -37,6 +61,11 @@
     }
     .training-status {
       display: none;
+      @include desktop-up {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
       .progress {
         margin-bottom: $small-space / 2;
       }
@@ -45,11 +74,6 @@
         display: block;
         font-size: 0.9rem;
         margin-bottom: $medium-space;
-      }
-      @include desktop-up {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
       }
     }
     button {

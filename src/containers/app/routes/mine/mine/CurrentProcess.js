@@ -1,23 +1,23 @@
 import React from 'react';
 import Model from './Model';
 
-const CurrentProcess = ({ modelQueue, dequeueModel }) => (
+const CurrentProcess = ({ currentModels, dequeueModel }) => (
   <div className="model-queue">
-    {modelQueue.length > 0 && (
+    {currentModels.length > 0 && (
       <ul>
-        {modelQueue.map((model, index) => {
+        {currentModels.map((model, index) => {
           return (
             <Model
               key={`model-${index}`}
               buttonFunc={() => dequeueModel(model)}
               model={model}
-              queued
+              isTraining
             />
           );
         })}
       </ul>
     )}
-    {modelQueue.length <= 0 && (
+    {currentModels.length <= 0 && (
       <p className="null-set">There are no models currently being trained.</p>
     )}
   </div>

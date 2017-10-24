@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
-const Title = model => <h5 className="name not-capped">{model.name}</h5>;
+import modelImage from './assets/model.svg';
 
-const Meta = model => (
+const Title = ({ name }) => <h5 className="name not-capped">{name}</h5>;
+
+const Meta = ({ isPrivate, author, bounty }) => (
   <div className="meta">
-    {model.private && <i className="fa fa-lock private" />}
-    <span className="author">{model.author}</span>
+    {isPrivate && <i className="fa fa-lock private" />}
+    <span className="author">{author}</span>
     <span className="separator"> - </span>
     <span className="bounty">
-      {`${model.bounty
+      {`${bounty
         .toLocaleString('en-US', {
           style: 'currency',
           currency: 'USD'
@@ -19,12 +21,41 @@ const Meta = model => (
   </div>
 );
 
-const CTAButton = ({ model, queued, buttonFunc }) => (
+const Requests = ({ requests }) => (
+  <ul>
+    {Object.keys(requests).map((key, index) => {
+      if (typeof requests[key] === 'string') {
+        return (
+          <li key={`request-${index}`}>
+            {key} - {requests[key]}
+          </li>
+        );
+      } else {
+        return (
+          <li key={`request-${index}`}>
+            {key}
+            <ul>
+              {Object.keys(requests[key]).map((nextKey, nextIndex) => {
+                return (
+                  <li key={`request-${index}-${nextIndex}`}>
+                    {nextKey} - {requests[key][nextKey]}
+                  </li>
+                );
+              })}
+            </ul>
+          </li>
+        );
+      }
+    })}
+  </ul>
+);
+
+const CTAButton = ({ model, isTraining, buttonFunc }) => (
   <button
-    className={!queued ? 'medium-gray' : 'dark-gray'}
+    className={isTraining ? 'dark-gray' : 'medium-gray'}
     onClick={() => buttonFunc(model)}
   >
-    {!queued ? 'Add to Queue' : 'Pause Training'}
+    {isTraining ? 'Pause Training' : 'Add to Queue'}
   </button>
 );
 
@@ -37,16 +68,26 @@ const Progress = ({ percent }) => (
   </div>
 );
 
-class TrainingStatus extends Component {
+const TrainingStatus = ({ getTime, getPercent }) => (
+  <div className="training-status">
+    <Progress percent={getPercent()} />
+    <span className="time-remaining">{getTime()}</span>
+  </div>
+);
+
+class Model extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       waited: 0,
-      totalWait: 0
+      totalWait: 0,
+      isShowingRequests: false
     };
 
     this.tick = this.tick.bind(this);
+    this.getPercentRemaining = this.getPercentRemaining.bind(this);
+    this.getTimeRemaining = this.getTimeRemaining.bind(this);
   }
 
   componentDidMount() {
@@ -106,38 +147,62 @@ class TrainingStatus extends Component {
     return 'Training complete.';
   }
 
-  render() {
+  shouldShowButton() {
     return (
-      <div className="training-status">
-        <Progress percent={this.getPercentRemaining()} />
-        <span className="time-remaining">{this.getTimeRemaining()}</span>
-        {this.getSecondsRemaining() > 0 && (
-          <CTAButton
-            model={this.props.model}
-            queued={this.props.queued}
-            buttonFunc={this.props.buttonFunc}
-          />
-        )}
-      </div>
+      (this.props.isTraining && this.getSecondsRemaining() > 0) ||
+      !this.props.isTraining
+    );
+  }
+
+  render() {
+    const { model, isTraining, buttonFunc } = this.props;
+
+    return (
+      <li className="model">
+        <div className="content">
+          {isTraining && (
+            <img
+              src={modelImage}
+              alt={model.name}
+              className={
+                this.getSecondsRemaining() > 0 ? (
+                  'model-image training'
+                ) : (
+                  'model-image'
+                )
+              }
+            />
+          )}
+          <div
+            className="model-data"
+            onClick={() =>
+              this.setState({
+                isShowingRequests: !this.state.isShowingRequests
+              })}
+          >
+            <Title {...model} />
+            <Meta {...model} />
+            {this.state.isShowingRequests && <Requests {...model} />}
+          </div>
+        </div>
+        <div className="progress-cta">
+          {isTraining && (
+            <TrainingStatus
+              getTime={this.getTimeRemaining}
+              getPercent={this.getPercentRemaining}
+            />
+          )}
+          {this.shouldShowButton() && (
+            <CTAButton
+              model={model}
+              isTraining={isTraining}
+              buttonFunc={buttonFunc}
+            />
+          )}
+        </div>
+      </li>
     );
   }
 }
-
-const Model = ({ model, queued, buttonFunc }) => (
-  <li className="model">
-    <div className="content">
-      <Title {...model} />
-      <Meta {...model} />
-    </div>
-    <div className="progress-cta">
-      {queued && (
-        <TrainingStatus model={model} queued={queued} buttonFunc={buttonFunc} />
-      )}
-      {!queued && (
-        <CTAButton model={model} queued={queued} buttonFunc={buttonFunc} />
-      )}
-    </div>
-  </li>
-);
 
 export default Model;

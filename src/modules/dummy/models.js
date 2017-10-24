@@ -10,7 +10,7 @@ const models = [
   {
     id: guid(),
     name: 'Facebook Post Sentiment',
-    private: true,
+    isPrivate: true,
     author: 'Facebook, Inc.',
     bounty: 4000,
     requests: {
@@ -21,7 +21,7 @@ const models = [
   {
     id: guid(),
     name: 'Cat Image Classifier',
-    private: true,
+    isPrivate: true,
     author: 'Google, Inc.',
     bounty: 7500,
     requests: {
@@ -31,7 +31,7 @@ const models = [
   {
     id: guid(),
     name: 'Geonomic Classifier',
-    private: false,
+    isPrivate: false,
     author: '23 & Me, Inc.',
     bounty: 30000,
     requests: {
@@ -44,7 +44,7 @@ const models = [
   {
     id: guid(),
     name: 'Tweet Sentiment Predictor',
-    private: true,
+    isPrivate: true,
     author: 'Cato Institute',
     bounty: 10000,
     requests: {
@@ -55,7 +55,7 @@ const models = [
   {
     id: guid(),
     name: 'Donald Trump Tweet Predictor',
-    private: false,
+    isPrivate: false,
     author: 'Kevin Kerr',
     bounty: 2000,
     requests: {
@@ -65,7 +65,7 @@ const models = [
   {
     id: guid(),
     name: 'US Congress Bill NLP Analysis',
-    private: true,
+    isPrivate: true,
     author: 'Poliana',
     bounty: 4000,
     requests: {
