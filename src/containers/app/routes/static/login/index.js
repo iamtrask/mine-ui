@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { authenticateUser } from '../../../../../modules/auth';
-import Page from '../../../components/page';
 import {
   BackgroundGradient,
+  Page,
   Input,
   Button,
   Row,
@@ -39,7 +39,9 @@ const LoginCard = ({ state, change, submit }) => (
         />
       </Column>
       <Column sizes={{ small: 12 }}>
-        <Button className='button' type="submit" centered color='black'>Log in</Button>
+        <Button className="button" type="submit" centered color="black">
+          Log in
+        </Button>
       </Column>
     </Row>
   </form>
