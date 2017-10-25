@@ -1,27 +1,35 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import { Input, Container, Row, Column, Switch, Page, Heading } from 'omui';
+import {
+  Input,
+  Container,
+  Row,
+  Column,
+  Switch,
+  Page,
+  Heading
+} from "openmined-ui";
 
-import Fuse from 'fuse.js';
+import Fuse from "fuse.js";
 
 import {
   getAvailableModels,
   getCurrentModels,
   enqueueModel,
   dequeueModel
-} from '../../../../../modules/models';
+} from "../../../../../modules/models";
 
-import AvailableModels from './AvailableModels';
-import CurrentProcess from './CurrentProcess';
+import AvailableModels from "./AvailableModels";
+import CurrentProcess from "./CurrentProcess";
 
-import './mine.css';
+import "./mine.css";
 
 const options = {
   shouldSort: true,
   minMatchCharLength: 1,
-  keys: ['name', 'author']
+  keys: ["name", "author"]
 };
 
 class Mine extends Component {
@@ -29,7 +37,7 @@ class Mine extends Component {
     super(props);
 
     this.state = {
-      search: '',
+      search: "",
       autoEnroll: false
     };
   }
@@ -39,7 +47,7 @@ class Mine extends Component {
   }
 
   getAvailableModels(models, search) {
-    if (search !== '') {
+    if (search !== "") {
       return new Fuse(this.props.availableModels, options).search(
         this.state.search
       );

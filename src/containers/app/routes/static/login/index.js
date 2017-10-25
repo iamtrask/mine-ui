@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { authenticateUser } from '../../../../../modules/auth';
+import React, { Component } from "react";
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+import { authenticateUser } from "../../../../../modules/auth";
 import {
   BackgroundGradient,
   Page,
@@ -10,11 +10,11 @@ import {
   Row,
   Column,
   Container
-} from 'omui';
+} from "openmined-ui";
 
-import logo from '../../../assets/logo.svg';
+import logo from "../../../assets/logo.svg";
 
-import './login.css';
+import "./login.css";
 
 const LoginCard = ({ state, change, submit }) => (
   <form className="login-card" onSubmit={submit}>
@@ -52,8 +52,8 @@ class Login extends Component {
     super(props);
 
     this.state = {
-      email: '',
-      password: ''
+      email: "",
+      password: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -61,7 +61,7 @@ class Login extends Component {
   }
 
   handleSubmit(e) {
-    if (this.state.email !== '' && this.state.password !== '') {
+    if (this.state.email !== "" && this.state.password !== "") {
       this.props.authenticateUser(this.state);
     }
 
