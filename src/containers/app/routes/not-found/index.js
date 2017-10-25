@@ -1,5 +1,5 @@
 import React from 'react';
-import { BackgroundGradient, Page, Heading } from 'omui';
+import { BackgroundGradient, Page, Heading } from 'openmined-ui';
 
 import './not-found.css';
 

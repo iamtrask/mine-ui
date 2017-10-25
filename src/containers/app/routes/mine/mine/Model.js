@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import moment from 'moment';
-
-import modelImage from './assets/model.svg';
+import React, { Component } from "react";
+import moment from "moment";
+import { Progress } from "openmined-ui";
+import modelImage from "./assets/model.svg";
 
 const Title = ({ name }) => <h5 className="name not-capped">{name}</h5>;
 
@@ -12,9 +12,9 @@ const Meta = ({ isPrivate, author, bounty }) => (
     <span className="separator"> - </span>
     <span className="bounty">
       {`${bounty
-        .toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD'
+        .toLocaleString("en-US", {
+          style: "currency",
+          currency: "USD"
         })
         .slice(0, -3)} bounty`}
     </span>
@@ -24,7 +24,7 @@ const Meta = ({ isPrivate, author, bounty }) => (
 const Requests = ({ requests }) => (
   <ul>
     {Object.keys(requests).map((key, index) => {
-      if (typeof requests[key] === 'string') {
+      if (typeof requests[key] === "string") {
         return (
           <li key={`request-${index}`}>
             {key} - {requests[key]}
@@ -52,20 +52,11 @@ const Requests = ({ requests }) => (
 
 const CTAButton = ({ model, isTraining, buttonFunc }) => (
   <button
-    className={isTraining ? 'dark-gray' : 'medium-gray'}
+    className={isTraining ? "dark-gray" : "medium-gray"}
     onClick={() => buttonFunc(model)}
   >
-    {isTraining ? 'Pause Training' : 'Add to Queue'}
+    {isTraining ? "Pause Training" : "Add to Queue"}
   </button>
-);
-
-// TODO: We need to move this to the component library (OMUI)
-const Progress = ({ percent }) => (
-  <div className="progress">
-    <span className="marker" style={{ width: percent + '%' }}>
-      {percent}%
-    </span>
-  </div>
 );
 
 const TrainingStatus = ({ getTime, getPercent }) => (
@@ -114,7 +105,7 @@ class Model extends Component {
   }
 
   getSecondsRemaining() {
-    return moment.duration(this.state.totalWait - this.state.waited, 'seconds');
+    return moment.duration(this.state.totalWait - this.state.waited, "seconds");
   }
 
   getPercentRemaining() {
@@ -129,22 +120,22 @@ class Model extends Component {
         if (num === 1) return `${num} ${word}`;
         else if (num > 1) return `${num} ${word}s`;
 
-        return '';
+        return "";
       };
 
-      let hours = determineTense(remaining.hours(), 'hour'),
-        minutes = determineTense(remaining.minutes(), 'minute'),
-        seconds = determineTense(remaining.seconds(), 'second'),
+      let hours = determineTense(remaining.hours(), "hour"),
+        minutes = determineTense(remaining.minutes(), "minute"),
+        seconds = determineTense(remaining.seconds(), "second"),
         timeArray = [];
 
-      if (hours !== '') timeArray.push(hours);
-      if (minutes !== '') timeArray.push(minutes);
-      if (seconds !== '') timeArray.push(seconds);
+      if (hours !== "") timeArray.push(hours);
+      if (minutes !== "") timeArray.push(minutes);
+      if (seconds !== "") timeArray.push(seconds);
 
-      return `About ${timeArray.join(', ')} remaining`;
+      return `About ${timeArray.join(", ")} remaining`;
     }
 
-    return 'Training complete.';
+    return "Training complete.";
   }
 
   shouldShowButton() {
@@ -166,9 +157,9 @@ class Model extends Component {
               alt={model.name}
               className={
                 this.getSecondsRemaining() > 0 ? (
-                  'model-image training'
+                  "model-image training"
                 ) : (
-                  'model-image'
+                  "model-image"
                 )
               }
             />

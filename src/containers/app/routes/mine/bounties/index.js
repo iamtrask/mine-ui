@@ -1,5 +1,5 @@
-import React from 'react';
-import {Heading, Page} from 'omui';
+import React from "react";
+import { Heading, Page } from "openmined-ui";
 
 export default () => (
   <Page id="bounties" className="header-margin-bump" title="Bounties" noCrawl>
