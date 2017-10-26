@@ -10,7 +10,7 @@ import {
   Row,
   Column,
   Container
-} from 'omui';
+} from 'openmined-ui';
 
 import logo from '../../../assets/logo.svg';
 

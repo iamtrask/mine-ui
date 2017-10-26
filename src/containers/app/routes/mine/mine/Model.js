@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import { Progress } from 'openmined-ui';
 
 import modelImage from './assets/model.svg';
 
@@ -57,15 +58,6 @@ const CTAButton = ({ model, isTraining, buttonFunc }) => (
   >
     {isTraining ? 'Pause Training' : 'Add to Queue'}
   </button>
-);
-
-// TODO: We need to move this to the component library (OMUI)
-const Progress = ({ percent }) => (
-  <div className="progress">
-    <span className="marker" style={{ width: percent + '%' }}>
-      {percent}%
-    </span>
-  </div>
 );
 
 const TrainingStatus = ({ getTime, getPercent }) => (

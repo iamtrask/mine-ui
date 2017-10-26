@@ -1,6 +1,7 @@
 @import 'normalize.css/normalize';
 @import 'styles/general';
 @import 'styles/colors';
+@import 'styles/typography';
 
 html {
   box-sizing: border-box;
@@ -32,9 +33,3 @@ body {
 
   overflow-x: hidden;
 }
-
-// Load in the UI elements
-@import 'styles/ui/grid';
-@import 'styles/ui/typography';
-@import 'styles/ui/buttons';
-@import 'styles/ui/progress';
