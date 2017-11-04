@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { Input, Container, Row, Column, Switch, Page, Heading } from 'openmined-ui';
+import {
+  Input,
+  Container,
+  Row,
+  Column,
+  Switch,
+  Page,
+  Heading
+} from 'openmined-ui';
 
 import Fuse from 'fuse.js';
 
@@ -33,6 +41,7 @@ class Mine extends Component {
       autoEnroll: false
     };
   }
+
   componentDidMount() {
     this.props.getAvailableModels();
     this.props.getCurrentModels();

@@ -1,6 +1,8 @@
 // Dummy models we use as stubs until mine.js has this fully implemented
 import DUMMY_MODELS from './dummy/models';
 
+import { addNotification } from './notifications';
+
 export const GET_AVAILABLE_MODELS = 'model/GET_AVAILABLE_MODELS';
 export const GET_CURRENT_MODELS = 'model/GET_CURRENT_MODELS';
 export const ENQUEUE_MODEL = 'model/ENQUEUE_MODEL';
@@ -105,6 +107,13 @@ export const enqueueModel = model => {
       type: ENQUEUE_MODEL,
       model
     });
+
+    dispatch(
+      addNotification({
+        type: 'success',
+        text: `Added ${model.name} to training queue`
+      })
+    );
   };
 };
 
@@ -122,6 +131,13 @@ export const dequeueModel = model => {
           type: DEQUEUE_MODEL,
           index: index
         });
+
+        dispatch(
+          addNotification({
+            type: 'success',
+            text: `Removed ${model.name} from training queue`
+          })
+        );
       }
     });
   };

@@ -40,7 +40,7 @@ export const addNotification = notification => {
 
 export const removeNotification = id => {
   return (dispatch, getState) => {
-    getState().notification.notifications.forEach((item, index) => {
+    getState().notifications.notifications.forEach((item, index) => {
       if (item.id === id) {
         dispatch({
           type: REMOVE_NOTIFICATION,

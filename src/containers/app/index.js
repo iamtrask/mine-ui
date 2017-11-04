@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Route, Switch } from 'react-router-dom';
 
 // Action Creators
-import { removeNotification } from '../../modules/notification';
+import { removeNotification } from '../../modules/notifications';
 
 import asyncComponent from './components/async-component';
 
@@ -47,7 +47,7 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
-  notifications: state.notification.notifications
+  notifications: state.notifications.notifications
 });
 
 const mapDispatchToProps = dispatch =>
