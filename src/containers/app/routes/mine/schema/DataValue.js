@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Key from './Key';
-import Value from './Value';
-import Adapter from './Adapter';
+import Key from './types/Key';
+import Value from './types/Value';
+import Adapter from './types/Adapter';
 
 import translator from './translator';
 

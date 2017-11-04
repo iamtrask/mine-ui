@@ -4,4 +4,9 @@
   .key {
     font-weight: $bold-weight;
   }
+  .value {
+    &.not-entered {
+      color: $light-gray;
+    }
+  }
 }
