@@ -6,9 +6,11 @@ import DataArray from './DataArray';
 import DataObject from './DataObject';
 import DataValue from './DataValue';
 
+import { Heading } from 'openmined-ui';
+
 const SchemaBlock = ({ block, index }) => (
   <div className="schema-block">
-    {translator(index)}
+    <Heading level={3}>{translator(index)}</Heading>
     {Object.keys(block).map((data, iterator) => {
       const blockData = block[data];
 
