@@ -28,7 +28,7 @@ const profile = {
       proficiency: 'Conversational'
     }
   ]
-}
+};
 
 const contactInfo = {
   emails: ['jack.stratton@gmail.com', 'thevulf@vulfpeck.com'],
@@ -51,7 +51,7 @@ const contactInfo = {
     }
   ],
   websites: ['https://www.vulfpeck.com']
-}
+};
 
 const relationships = [
   {
@@ -73,7 +73,7 @@ const relationships = [
       website: null
     }
   }
-]
+];
 
 const education = [
   {
@@ -87,7 +87,7 @@ const education = [
     areaOfStudy: 'Biology',
     levelOfDegree: 'Bachelors'
   }
-]
+];
 
 const employment = [
   {
@@ -101,7 +101,7 @@ const employment = [
     location: 'Los Angeles, CA',
     jobTitle: 'Director of Product'
   }
-]
+];
 
 const posts = [
   {
@@ -119,7 +119,7 @@ const posts = [
     type: 'adapter-4',
     value: 'posts'
   }
-]
+];
 
 const messages = [
   {
@@ -132,7 +132,7 @@ const messages = [
     type: 'adapter-4',
     value: 'direct-messages'
   }
-]
+];
 
 const location = {
   static: {
@@ -149,7 +149,7 @@ const location = {
       value: 'location'
     }
   ]
-}
+};
 
 const search = [
   {
@@ -157,7 +157,7 @@ const search = [
     type: 'adapter-3',
     value: 'history'
   }
-]
+];
 
 const health = {
   weight: [
@@ -170,7 +170,7 @@ const health = {
   height: null,
   bmi: null,
   bloodPressure: null
-}
+};
 
 const schema = {
   profile
@@ -183,6 +183,6 @@ const schema = {
   // location,
   // search,
   // health
-}
+};
 
-export default schema
+export default schema;
