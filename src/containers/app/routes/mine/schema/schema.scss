@@ -13,6 +13,11 @@
   }
 
   .data-object {
+    border: 1px solid red;
+  }
+
+  .data-object,
+  .data-array {
     margin: 30px;
   }
 }

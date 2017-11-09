@@ -1,3 +1,5 @@
+// @flow
+
 const profile = {
   names: {
     primary: {
@@ -173,16 +175,16 @@ const health = {
 };
 
 const schema = {
-  profile
-  // contactInfo,
-  // relationships,
-  // education,
-  // employment,
-  // posts,
-  // messages,
-  // location,
-  // search,
-  // health
+  profile,
+  contactInfo,
+  relationships,
+  education,
+  employment,
+  posts,
+  messages,
+  location,
+  search,
+  health
 };
 
 export default schema;

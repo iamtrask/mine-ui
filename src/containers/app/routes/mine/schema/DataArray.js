@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 
-import DataTree from './DataTree';
+import DataObject from './DataObject';
 import translator from './translator';
 import Key from './types/Key';
 import Value from './types/Value';
@@ -15,13 +15,17 @@ type Props = {
 const DataArray = ({ data, title }: Props) => (
   <div>
     <Key>{translator(title)}</Key>
-    <div className="data-array">
-      {data.map((d, i) => {
-        if (typeof d === 'object') return <DataTree data={d} index={i} />;
+    {data.length ? (
+      <div className="data-array">
+        {data.map((d, i) => {
+          if (typeof d === 'object') return <DataObject data={d} index={i} />;
 
-        return <Value>{d}</Value>;
-      })}
-    </div>
+          return <Value>{d}</Value>;
+        })}
+      </div>
+    ) : (
+      <Value />
+    )}
   </div>
 );
 

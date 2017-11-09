@@ -7,11 +7,11 @@ import Key from './types/Key';
 
 type Props = {
   data: {},
-  title: string
+  title?: string
 };
 const DataObject = ({ data, title }: Props) => (
   <div>
-    <Key>{translator(title)}</Key>
+    {title && <Key>{translator(title)}</Key>}
     <div className="data-object">
       <DataTree data={data} index={0} />
     </div>
