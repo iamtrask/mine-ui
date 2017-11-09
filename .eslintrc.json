@@ -1,6 +1,8 @@
 {
   "env": {
-    "jest": true
+    "jest": true,
+    "serviceworker": true,
+    "browser": true
   },
   "extends": [
     "standard",

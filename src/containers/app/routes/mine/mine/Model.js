@@ -127,10 +127,10 @@ class Model extends Component {
         return '';
       };
 
-      let hours = determineTense(remaining.hours(), 'hour'),
-        minutes = determineTense(remaining.minutes(), 'minute'),
-        seconds = determineTense(remaining.seconds(), 'second'),
-        timeArray = [];
+      let hours = determineTense(remaining.hours(), 'hour');
+      let minutes = determineTense(remaining.minutes(), 'minute');
+      let seconds = determineTense(remaining.seconds(), 'second');
+      let timeArray = [];
 
       if (hours !== '') timeArray.push(hours);
       if (minutes !== '') timeArray.push(minutes);
