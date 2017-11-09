@@ -1,13 +1,13 @@
 // @flow
-import React, {type Node} from 'react'
+import React, { type Node } from 'react';
 
 type Props = {
   children: Node
-}
-const Value = ({children}: Props) => (
+};
+const Value = ({ children }: Props) => (
   <div className="value">
-    {children ? children : <span className="not-entered">Not Entered</span>}
+    {children || <span className="not-entered">Not Entered</span>}
   </div>
-)
+);
 
-export default Value
+export default Value;

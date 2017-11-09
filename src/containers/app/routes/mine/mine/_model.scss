@@ -28,6 +28,8 @@
       }
     }
     .model-data {
+      cursor: pointer;
+      user-select: none;
       .name {
         margin-top: 0px;
         margin-bottom: 5px;

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import moment from 'moment';
 import { Progress } from 'openmined-ui';
 
+import DataObject from '../schema/DataObject';
+
 import modelImage from './assets/model.svg';
 
 const Title = ({ name }) => <h5 className="name not-capped">{name}</h5>;
@@ -23,32 +25,33 @@ const Meta = ({ isPrivate, author, bounty }) => (
 );
 
 const Requests = ({ requests }) => (
-  <ul>
+  <div className="requests">
     {Object.keys(requests).map((key, index) => {
-      if (typeof requests[key] === 'string') {
-        return (
-          <li key={`request-${index}`}>
-            {key} - {requests[key]}
-          </li>
-        );
-      } else {
-        return (
-          <li key={`request-${index}`}>
-            {key}
-            <ul>
-              {Object.keys(requests[key]).map((nextKey, nextIndex) => {
-                return (
-                  <li key={`request-${index}-${nextIndex}`}>
-                    {nextKey} - {requests[key][nextKey]}
-                  </li>
-                );
-              })}
-            </ul>
-          </li>
-        );
-      }
+      return <DataObject data={requests} />;
+      // if (typeof requests[key] === 'string') {
+      //   return (
+      //     <li key={`request-${index}`}>
+      //       {key} - {requests[key]}
+      //     </li>
+      //   );
+      // } else {
+      //   return (
+      //     <li key={`request-${index}`}>
+      //       {key}
+      //       <ul>
+      //         {Object.keys(requests[key]).map((nextKey, nextIndex) => {
+      //           return (
+      //             <li key={`request-${index}-${nextIndex}`}>
+      //               {nextKey} - {requests[key][nextKey]}
+      //             </li>
+      //           );
+      //         })}
+      //       </ul>
+      //     </li>
+      //   );
+      // }
     })}
-  </ul>
+  </div>
 );
 
 const CTAButton = ({ model, isTraining, buttonFunc }) => (
@@ -124,10 +127,10 @@ class Model extends Component {
         return '';
       };
 
-      let hours = determineTense(remaining.hours(), 'hour'),
-        minutes = determineTense(remaining.minutes(), 'minute'),
-        seconds = determineTense(remaining.seconds(), 'second'),
-        timeArray = [];
+      let hours = determineTense(remaining.hours(), 'hour');
+      let minutes = determineTense(remaining.minutes(), 'minute');
+      let seconds = determineTense(remaining.seconds(), 'second');
+      let timeArray = [];
 
       if (hours !== '') timeArray.push(hours);
       if (minutes !== '') timeArray.push(minutes);
@@ -157,11 +160,9 @@ class Model extends Component {
               src={modelImage}
               alt={model.name}
               className={
-                this.getSecondsRemaining() > 0 ? (
-                  'model-image training'
-                ) : (
-                  'model-image'
-                )
+                this.getSecondsRemaining() > 0
+                  ? 'model-image training'
+                  : 'model-image'
               }
             />
           )}
