@@ -1,5 +1,9 @@
-import React from 'react';
+// @flow
+import React, {type Node} from 'react'
 
-const Key = ({ children }) => <div className="key">{children}</div>;
+type Props = {
+  children: Node
+}
+const Key = ({children}: Props) => <div className="key">{children}</div>
 
-export default Key;
+export default Key

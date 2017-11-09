@@ -3,14 +3,16 @@
 .schema-block {
   .key {
     font-weight: $bold-weight;
+    display: inline-block;
   }
   .value {
+    display: inline-block;
     &.not-entered {
       color: $light-gray;
     }
   }
 
   .data-object {
-    margin: 10px;
+    margin: 30px;
   }
 }

@@ -1,37 +1,43 @@
+// @flow
 import React from 'react'
 
 import DataArray from './DataArray'
 import DataObject from './DataObject'
 import DataValue from './DataValue'
 
-const DataTree = ({block, index}) => (
+const getComponentType = function(blockData) {
+  switch (true) {
+    case !blockData: {
+      return DataValue
+    }
+    case Array.isArray(blockData): {
+      return DataArray
+    }
+    case typeof blockData === 'object': {
+      return DataObject
+    }
+    default: {
+      return DataValue
+    }
+  }
+}
+
+type Props = {
+  data: {},
+  index: number
+}
+
+const DataTree = ({data, index}: Props) => (
   <div className="data-tree">
-    {Object.keys(block).map((data, iterator) => {
-      const blockData = block[data]
+    {Object.keys(data).map((key, iterator) => {
+      const blockData = data[key]
 
-      if (!blockData) return null
-
-      if (Array.isArray(blockData)) {
-        return (
-          <DataArray
-            key={`schema-${index}-${iterator}`}
-            data={blockData}
-            title={data}
-          />
-        )
-      }
-
-      if (typeof blockData === 'object') {
-        return (
-          <DataObject key={`schema-${index}-${iterator}`} data={blockData} />
-        )
-      }
-
+      const ComponentType = getComponentType(blockData)
       return (
-        <DataValue
+        <ComponentType
           key={`schema-${index}-${iterator}`}
-          title={data}
-          value={blockData}
+          data={blockData}
+          title={key}
         />
       )
     })}

@@ -1,17 +1,17 @@
 const translator = input => {
-  if (input !== null) {
+  if (input) {
     // Camel-case to spaces
-    let result = input.replace(/([A-Z])/g, ' $1');
+    let result = input.replace(/([A-Z])/g, ' $1')
 
     // Capitalize each word
     result = result.replace(/\w\S*/g, txt => {
-      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    });
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+    })
 
-    return result;
+    return result
   }
 
-  return input;
-};
+  return input
+}
 
-export default translator;
+export default translator
