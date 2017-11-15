@@ -26,7 +26,7 @@ export default (state = initialState, action) => {
 
 export const authenticateUser = ({ email, password }) => {
   return dispatch => {
-    console.log('DO SOMETHING WITH THIS', email, password);
+    console.log('DO SOMETHING WITH THIS', email, password); // eslint-disable-line no-console
 
     return setTimeout(() => {
       dispatch({

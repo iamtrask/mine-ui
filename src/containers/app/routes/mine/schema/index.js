@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -10,7 +11,12 @@ import SchemaBlock from './SchemaBlock';
 
 import './schema.css';
 
-class Schema extends Component {
+type Props = {
+  getGeneralSchema: () => void,
+  schema: {}
+};
+
+class Schema extends Component<Props> {
   componentDidMount() {
     this.props.getGeneralSchema();
   }
@@ -23,7 +29,7 @@ class Schema extends Component {
         {Object.keys(schema).map((block, index) => {
           return (
             <SchemaBlock
-              block={schema[block]}
+              data={schema[block]}
               index={block}
               key={`schema-block-${index}`}
             />

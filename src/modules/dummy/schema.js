@@ -1,3 +1,5 @@
+// @flow
+
 const profile = {
   names: {
     primary: {
