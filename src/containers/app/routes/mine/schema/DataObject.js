@@ -9,8 +9,9 @@ type Props = {
   data: {},
   title?: string
 };
+
 const DataObject = ({ data, title }: Props) => (
-  <div>
+  <div className="data-object-wrapper">
     {title && <Key>{translator(title)}</Key>}
     <div className="data-object">
       <DataTree data={data} index={0} />

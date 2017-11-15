@@ -10,6 +10,7 @@ type Props = {
   data: string,
   title: string
 };
+
 const DataValue = ({ title, data }: Props) => (
   <div className="data-value">
     <Key>{translator(title)}</Key>

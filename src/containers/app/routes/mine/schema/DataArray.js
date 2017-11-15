@@ -13,7 +13,7 @@ type Props = {
 };
 
 const DataArray = ({ data, title }: Props) => (
-  <div>
+  <div className="data-array-wrapper">
     <Key>{translator(title)}</Key>
     {data.length ? (
       <div className="data-array">

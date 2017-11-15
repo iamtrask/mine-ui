@@ -31,8 +31,8 @@ const DataTree = ({ data, index }: Props) => (
   <div className="data-tree">
     {Object.keys(data).map((key, iterator) => {
       const blockData = data[key];
-
       const ComponentType = getComponentType(blockData);
+
       return (
         <ComponentType
           key={`schema-${index}-${iterator}`}
