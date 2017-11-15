@@ -1,5 +1,5 @@
-export const ADD_NOTIFICATION = 'notification/ADD_NOTIFICATION';
-export const REMOVE_NOTIFICATION = 'notification/REMOVE_NOTIFICATION';
+export const ADD_NOTIFICATION = 'notifications/ADD_NOTIFICATION';
+export const REMOVE_NOTIFICATION = 'notifications/REMOVE_NOTIFICATION';
 
 const initialState = {
   notifications: []
