@@ -1,22 +1,20 @@
+// @flow
 import React from 'react';
 
-import Adapter from './types/Adapter';
+import DataTree from './DataTree';
+import translator from './translator';
+import Key from './types/Key';
 
-import DataValue from './DataValue';
-
-const DataObject = ({ data }) => (
-  <div className="data-object">
-    {!data.adapter &&
-      Object.keys(data).map(item => {
-        if (typeof data[item] === 'object' && data[item] !== null) {
-          // Object inside object
-          return <DataObject data={data[item]} />;
-        } else {
-          // Just a value
-          return <DataValue title={item} value={data[item]} />;
-        }
-      })}
-    {data.adapter && <Adapter {...data} />}
+type Props = {
+  data: {},
+  title?: string
+};
+const DataObject = ({ data, title }: Props) => (
+  <div>
+    {title && <Key>{translator(title)}</Key>}
+    <div className="data-object">
+      <DataTree data={data} index={0} />
+    </div>
   </div>
 );
 

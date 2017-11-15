@@ -1,5 +1,5 @@
 const translator = input => {
-  if (input !== null) {
+  if (input) {
     // Camel-case to spaces
     let result = input.replace(/([A-Z])/g, ' $1');
 

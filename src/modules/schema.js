@@ -1,3 +1,4 @@
+// @flow
 // Dummy schema we use as stubs until mine.js has this fully implemented
 import DUMMY_SCHEMA from './dummy/schema';
 
@@ -7,7 +8,7 @@ const initialState = {
   generalSchema: {} // The user's general schema
 };
 
-export default (state = initialState, action) => {
+export default (state: * = initialState, action: *) => {
   switch (action.type) {
     case GET_GENERAL_SCHEMA:
       return {
@@ -24,7 +25,7 @@ export default (state = initialState, action) => {
 export const getGeneralSchema = () => {
   // TODO: Replace DUMMY_SCHEMA with an actual fetch to mine.js
 
-  return dispatch => {
+  return (dispatch: *) => {
     dispatch({
       type: GET_GENERAL_SCHEMA,
       schema: DUMMY_SCHEMA
