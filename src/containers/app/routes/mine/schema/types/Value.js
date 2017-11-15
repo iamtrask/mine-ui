@@ -1,8 +1,12 @@
-import React from 'react';
+// @flow
+import React, { type Node } from 'react';
 
-const Value = ({ notEntered, children }) => (
-  <div className={'value ' + (notEntered ? 'not-entered' : 'entered')}>
-    {children ? children : <span>Not Entered</span>}
+type Props = {
+  children?: Node
+};
+const Value = ({ children }: Props) => (
+  <div className="value">
+    {children || <span className="not-entered">Not Entered</span>}
   </div>
 );
 

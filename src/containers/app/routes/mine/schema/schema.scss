@@ -3,10 +3,21 @@
 .schema-block {
   .key {
     font-weight: $bold-weight;
+    display: inline-block;
   }
   .value {
+    display: inline-block;
     &.not-entered {
       color: $light-gray;
     }
+  }
+
+  .data-object {
+    border: 1px solid red;
+  }
+
+  .data-object,
+  .data-array {
+    margin: 30px;
   }
 }
